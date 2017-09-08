@@ -15,7 +15,7 @@
             console.log('需要在 iframe 中调用');
         }
 
-        function getGps(func){
+        window.getGps = function (func){
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(p){
                     //成功获取位置
