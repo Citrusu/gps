@@ -10,10 +10,12 @@
     <div id="map"></div>
     <script>
         if (window.frames.length != parent.frames.length) {
-        　　alert('iframe')
+        　　console.log('iframe');
         }else{
-            alert('需要在 iframe 中调用');
+            console.log('需要在 iframe 中调用');
         }
+
+        var getGps = function(){
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(p){
                     //成功获取位置
@@ -21,13 +23,17 @@
                         lng: p.coords.longitude,
                         lat: p.coords.latitude
                     };
-                    document.querySelector('#map').innerHTML = JSON.stringify(position);
+                    //document.querySelector('#map').innerHTML = JSON.stringify(position);
+                    return position;
                 }, function(err){
                     alert('GPSerr'+err)
                 });
             }else {
-                alert( "Geolocation is not supported by this browser.");
+                alert( "OMG ! 您的设备不支持 GPS");
             }
+        }
+
+        
     </script>
 </body>
 </html>
