@@ -15,7 +15,7 @@
             console.log('需要在 iframe 中调用');
         }
 
-        function getGps(){
+        function getGps(func){
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(p){
                     //成功获取位置
@@ -24,6 +24,10 @@
                         lat: p.coords.latitude
                     };
                     //document.querySelector('#map').innerHTML = JSON.stringify(position);
+                    console.log(position);
+                    if(func){
+                        func(position);
+                    }
                     return position;
                 }, function(err){
                     alert('GPSerr'+err)
