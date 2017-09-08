@@ -20,17 +20,17 @@
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(p){
                     //成功获取位置
-                    var position = {
+                    position = {
                         lng: p.coords.longitude,
                         lat: p.coords.latitude
                     };
                     //document.querySelector('#map').innerHTML = JSON.stringify(position);
                     console.log(position);
+                    parent.postMessage(position, '*');
                     if(func){
                         func(position);
                     }
                     // parent.postMessage(position, '*');
-                    return position;
                 }, function(err){
                     console.log('GPSerr'+err)
                 });
@@ -39,8 +39,14 @@
             }
         }
         setInterval(function(){
-            position = getGps();
-            parent.postMessage(position, '*');
+            try{
+                position = getGps();
+                console.log(position);
+                parent.postMessage(position, '*');
+            }catch(e){
+                console.log(e);
+            }
+        
         }, 3000);
         
     </script>
