@@ -38,7 +38,9 @@
                 alert( "OMG ! 您的设备不支持 GPS");
             }
         }
-        setInterval(getGps, 3000);
+        setInterval(function(){
+            parent.postMessage({time: new Date()}, '*');
+        }, 3000);
         
     </script>
 </body>
