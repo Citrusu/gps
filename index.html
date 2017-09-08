@@ -10,34 +10,34 @@
     <div id="map"></div>
     <script>
         parent.postMessage({name:'test'}, '*');
-        if (window.frames.length != parent.frames.length) {
-        　　console.log('iframe');
-        }else{
-            console.log('需要在 iframe 中调用');
-        }
+        // if (window.frames.length != parent.frames.length) {
+        // 　　console.log('iframe');
+        // }else{
+        //     console.log('需要在 iframe 中调用');
+        // }
 
-        function getGps(func){
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(p){
-                    //成功获取位置
-                    var position = {
-                        lng: p.coords.longitude,
-                        lat: p.coords.latitude
-                    };
-                    //document.querySelector('#map').innerHTML = JSON.stringify(position);
-                    console.log(position);
-                    if(func){
-                        func(position);
-                    }
-                    parent.postMessage(position, '*');
-                    return position;
-                }, function(err){
-                    alert('GPSerr'+err)
-                });
-            }else {
-                alert( "OMG ! 您的设备不支持 GPS");
-            }
-        }
+        // function getGps(func){
+        //     if (navigator.geolocation) {
+        //         navigator.geolocation.getCurrentPosition(function(p){
+        //             //成功获取位置
+        //             var position = {
+        //                 lng: p.coords.longitude,
+        //                 lat: p.coords.latitude
+        //             };
+        //             //document.querySelector('#map').innerHTML = JSON.stringify(position);
+        //             console.log(position);
+        //             if(func){
+        //                 func(position);
+        //             }
+        //             parent.postMessage(position, '*');
+        //             return position;
+        //         }, function(err){
+        //             alert('GPSerr'+err)
+        //         });
+        //     }else {
+        //         alert( "OMG ! 您的设备不支持 GPS");
+        //     }
+        // }
         // getGps();
         
     </script>
