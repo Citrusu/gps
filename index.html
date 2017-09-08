@@ -9,13 +9,13 @@
 <body>
     <div id="map"></div>
     <script>
-        parent.postMessage({name:'test'}, '*');
+        // parent.postMessage({name:'test'}, '*');
         // if (window.frames.length != parent.frames.length) {
         // 　　console.log('iframe');
         // }else{
         //     console.log('需要在 iframe 中调用');
         // }
-
+        var postion = null;
         function getGps(func){
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(p){
@@ -29,8 +29,8 @@
                     if(func){
                         func(position);
                     }
-                    parent.postMessage(position, '*');
-                    // return position;
+                    // parent.postMessage(position, '*');
+                    return position;
                 }, function(err){
                     console.log('GPSerr'+err)
                 });
@@ -39,7 +39,8 @@
             }
         }
         setInterval(function(){
-            parent.postMessage({time: new Date()}, '*');
+            position = getGps();
+            parent.postMessage(position, '*');
         }, 3000);
         
     </script>
