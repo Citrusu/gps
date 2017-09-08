@@ -9,6 +9,7 @@
 <body>
     <div id="map"></div>
     <script>
+        parent.postMessage('test', '*');
         if (window.frames.length != parent.frames.length) {
         　　console.log('iframe');
         }else{
