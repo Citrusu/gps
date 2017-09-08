@@ -9,6 +9,11 @@
 <body>
     <div id="map"></div>
     <script>
+        if (window.frames.length != parent.frames.length) {
+        　　console.log('iframe')
+        }else{
+            console.log('需要在 iframe 中调用');
+        }
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(p){
                     //成功获取位置
